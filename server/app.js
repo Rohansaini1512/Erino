@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import { config } from 'dotenv';
 import morgan from 'morgan';
 import contactRoute from "./router/contact.router.js";
-
+import userRoute from "./router/user.routes.js";
 
 
 config();
@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
-
+app.use('/api/user', userRoute);
 app.use('/api/contact' , contactRoute);
 
 app.use('/ping', (req,res) => {
